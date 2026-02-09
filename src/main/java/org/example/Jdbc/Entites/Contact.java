@@ -1,5 +1,10 @@
 package org.example.Jdbc.Entites;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 public class Contact {
     private int id;
     private int customer_id;
@@ -9,9 +14,7 @@ public class Contact {
     private String email;
     private String phone;
 
-    public Contact(int id, int customer_id, String firstName, String lastName, String email, String phone) {
-        this.id = id;
-        this.customer_id = customer_id;
+    public Contact(String firstName, String lastName, String email, String phone) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -64,5 +67,39 @@ public class Contact {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public void ajouter() {
+        String sql = """
+                INSERT INTO CONTACTS(FIRST_NAME, LAST_NAME, EMAIL, PHONE, CUSTOMER_ID)
+                VALUES (?, ?, ?, ?, ?)
+                """;
+
+        Connection connection = DbManager.getConnection();
+
+        try {
+
+            // https://stackoverflow.com/questions/42566782/oracle12c-jdbc-identity-and-getgeneratedkeys
+            // aller refetch le ID pour le update
+            String[] generatedKeyColumns = new String[]{"contact_id"};
+
+            PreparedStatement ps = connection.prepareStatement(sql, generatedKeyColumns);
+            ps.setString(1, this.firstName);
+            ps.setString(2, this.lastName);
+            ps.setString(3, this.email);
+            ps.setString(4, this.phone);
+            ps.setInt(5, this.customer_id);
+
+            ps.executeUpdate();
+
+            try (ResultSet rs = ps.getGeneratedKeys()) {
+                if (rs.next()) {
+                    this.id = rs.getInt(1);
+                }
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

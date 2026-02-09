@@ -12,12 +12,18 @@ public class Client {
     private String website;
     private double credit_limit;
 
-    public Client(int id, String name, String address, String website, double credit_limit) {
-        this.id = id;
+    private Contact contact;
+
+    public Client(int id,String name, String address, String website, double credit_limit, Contact contact) {
         this.name = name;
         this.address = address;
         this.website = website;
         this.credit_limit = credit_limit;
+        this.contact = contact;
+    }
+
+    public Contact getContact() {
+        return contact;
     }
 
     public int getId() {
@@ -61,6 +67,7 @@ public class Client {
     }
 
     public void ajouter() {
+        // AJOUTER CLIENT
         String sql = """
                 INSERT INTO CUSTOMERS(name, address, website, credit_limit)
                 VALUES(?, ?, ?, ?)
@@ -91,6 +98,21 @@ public class Client {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+
+        try {
+            connection.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        // AJOUTER CONTACT
+
+        // Set le id pour eviter les problemes de foreign key
+        this.contact.setCustomer_id(this.getId());
+
+        this.contact.ajouter();
+
+
     }
 
     public void modifier() {
