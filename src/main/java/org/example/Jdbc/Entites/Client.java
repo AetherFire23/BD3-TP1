@@ -1,16 +1,31 @@
 package org.example.Jdbc.Entites;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 public class Client {
+    private int id;
     private String name;
     private String address;
     private String website;
     private double credit_limit;
 
-    public Client(String name, String address, String website, double credit_limit) {
+    public Client(int id, String name, String address, String website, double credit_limit) {
+        this.id = id;
         this.name = name;
         this.address = address;
         this.website = website;
         this.credit_limit = credit_limit;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -43,5 +58,46 @@ public class Client {
 
     public void setCredit_limit(double credit_limit) {
         this.credit_limit = credit_limit;
+    }
+
+    public void ajouter() {
+        String sql = """
+                INSERT INTO CUSTOMERS(name, address, website, credit_limit)
+                VALUES(?, ?, ?, ?)
+                """;
+
+        Connection connection = DbManager.getConnection();
+
+        try {
+
+            // https://stackoverflow.com/questions/42566782/oracle12c-jdbc-identity-and-getgeneratedkeys
+            // aller refetch le ID pour le update
+            String[] generatedKeyColumns = new String[]{"customer_id"};
+
+            PreparedStatement ps = connection.prepareStatement(sql, generatedKeyColumns);
+            ps.setString(1, this.name);
+            ps.setString(2, this.address);
+            ps.setString(3, this.website);
+            ps.setDouble(4, this.credit_limit);
+
+            ps.executeUpdate();
+
+            try (ResultSet rs = ps.getGeneratedKeys()) {
+                if (rs.next()) {
+                    this.id = rs.getInt(1);
+                }
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void modifier() {
+
+    }
+
+    public void supprimer() {
+
     }
 }
