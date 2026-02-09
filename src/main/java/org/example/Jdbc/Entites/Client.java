@@ -116,7 +116,32 @@ public class Client {
     }
 
     public void modifier() {
+        Connection connection = DbManager.getConnection();
 
+        String sql = """
+                UPDATE CUSTOMERS SET NAME = ?, ADDRESS = ?, WEBSITE = ?, CREDIT_LIMIT = ?  WHERE CUSTOMER_ID = ?                                                                                                    
+                """;
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, this.name);
+            preparedStatement.setString(2, this.address);
+            preparedStatement.setString(3, this.website);
+            preparedStatement.setDouble(4, this.credit_limit);
+            preparedStatement.setInt(5, this.id);
+            preparedStatement.executeUpdate();
+
+            //Modifier le contact
+            this.contact.modifier();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 
     public void supprimer() {

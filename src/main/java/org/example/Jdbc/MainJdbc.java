@@ -11,7 +11,10 @@ public class MainJdbc {
         Contact contact = new Contact("Jean", "Lamoureux", "Lhomme-Feu@hotmail.ca", "4503465745");
 
         Client client = new Client(-1, "Tabourets Élite Inc.", "123 venue pigeon", "www.EliteTabourets.org", 20000, contact);
-
         client.ajouter();
+
+        client.setName("Georges");
+        contact.setEmail("Test23@gmail.com");
+        client.modifier();
     }
 }

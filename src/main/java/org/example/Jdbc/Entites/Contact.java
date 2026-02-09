@@ -102,4 +102,31 @@ public class Contact {
             throw new RuntimeException(e);
         }
     }
+
+    public void modifier() {
+        Connection connection = DbManager.getConnection();
+
+        String sql = """
+                UPDATE CONTACTS SET FIRST_NAME = ?, LAST_NAME = ?, EMAIL = ?, PHONE = ? WHERE CONTACT_ID = ? 
+                """;
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, this.firstName);
+            preparedStatement.setString(2, this.lastName);
+            preparedStatement.setString(3, this.email);
+            preparedStatement.setString(4, this.phone);
+            preparedStatement.setInt(5, this.id);
+
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
 }
