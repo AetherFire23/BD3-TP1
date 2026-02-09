@@ -152,4 +152,16 @@ public class Client {
 
         System.out.println("Client supprime avec id " + this.id);
     }
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", website='" + website + '\'' +
+                ", credit_limit=" + credit_limit +
+                ", contact=" + contact +
+                '}';
+    }
 }
