@@ -14,7 +14,7 @@ public class Client {
 
     private Contact contact;
 
-    public Client(int id,String name, String address, String website, double credit_limit, Contact contact) {
+    public Client(int id, String name, String address, String website, double credit_limit, Contact contact) {
         this.name = name;
         this.address = address;
         this.website = website;
@@ -111,8 +111,6 @@ public class Client {
         this.contact.setCustomer_id(this.getId());
 
         this.contact.ajouter();
-
-
     }
 
     public void modifier() {
@@ -132,6 +130,7 @@ public class Client {
             preparedStatement.executeUpdate();
 
             //Modifier le contact
+            preparedStatement.close();
             this.contact.modifier();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -146,5 +145,37 @@ public class Client {
 
     public void supprimer() {
 
+        this.contact.supprimer();
+
+        String sql = """
+                DELETE FROM CUSTOMERS
+                WHERE CUSTOMER_ID = ?
+                """;
+
+        Connection connection = DbManager.getConnection();
+
+        try {
+            // https://stackoverflow.com/questions/42566782/oracle12c-jdbc-identity-and-getgeneratedkeys
+            // aller refetch le ID pour le update
+            String[] generatedKeyColumns = new String[]{"customer_id"};
+
+            PreparedStatement ps = connection.prepareStatement(sql, generatedKeyColumns);
+            ps.setInt(1, this.id);
+            ps.executeUpdate();
+
+            try (ResultSet rs = ps.getGeneratedKeys()) {
+                if (rs.next()) {
+                    this.id = rs.getInt(1);
+                }
+            }
+
+            connection.close();
+            ps.close();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        System.out.println("Client supprime avec id " + this.id);
     }
 }
