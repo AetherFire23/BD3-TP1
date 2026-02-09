@@ -98,8 +98,47 @@ public class Contact {
                 }
             }
 
+            ps.close();
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void supprimer() {
+        String sql = """
+                  DELETE FROM CONTACTS
+                  WHERE CONTACT_ID = ?
+                """;
+
+        Connection connection = DbManager.getConnection();
+
+        try {
+
+            // https://stackoverflow.com/questions/42566782/oracle12c-jdbc-identity-and-getgeneratedkeys
+            // aller refetch le ID pour le update
+            String[] generatedKeyColumns = new String[]{"contact_id"};
+
+            PreparedStatement ps = connection.prepareStatement(sql, generatedKeyColumns);
+            ps.setInt(1, this.id);
+
+            ps.executeUpdate();
+
+
+            try (ResultSet rs = ps.getGeneratedKeys()) {
+                if (rs.next()) {
+                    this.id = rs.getInt(1);
+                }
+            }
+
+            ps.close();
+            connection.close();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        System.out.println("Contact supprime avec id " + this.getId());
+
     }
 }

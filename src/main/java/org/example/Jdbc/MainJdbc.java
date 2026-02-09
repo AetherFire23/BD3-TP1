@@ -13,5 +13,7 @@ public class MainJdbc {
         Client client = new Client(-1, "Tabourets Élite Inc.", "123 venue pigeon", "www.EliteTabourets.org", 20000, contact);
 
         client.ajouter();
+
+        client.supprimer();
     }
 }
