@@ -2,8 +2,10 @@ package org.example.Jdbc;
 
 import org.example.Jdbc.Entites.Client;
 import org.example.Jdbc.Entites.Contact;
+import org.example.Jdbc.Entites.DbManager;
 
 import java.sql.*;
+import java.util.List;
 
 public class MainJdbc {
     public static void main(String[] args) {
@@ -32,7 +34,29 @@ public class MainJdbc {
         Client client3 = new Client(-1, "Pirate Cosplay de Davy Jones.", "123 venue pigeon", "www.davy-jones-le-pirate.org", 7666, contact);
 
         Contact contact4 = new Contact("Émeric ", "Lincol", "Emeric-lincoln@hotmail.ca", "161581");
-        Client client4 = new Client(-1, "Lincol fils : l'histoire du fils illégitime", "555 venue pigeon", "", 200, contact);
+        Client client4 = new Client(-1, "Lincoln fils : l'histoire du fils illégitime", "555 venue pigeon", "", 200, contact);
 
+        getClients();
+    }
+
+    public static void getClients() {
+        String sql = "SELECT * FROM CUSTOMERS";
+        Connection connection = DbManager.getConnection();
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet s = ps.executeQuery();
+            while (s.next()) {
+                System.out.println(s.getString(1));
+                System.out.println(s.getString(2));
+                System.out.println(s.getString(3));
+                System.out.println(s.getString(4));
+                System.out.println(s.getString(5));
+            }
+
+            connection.close();
+            ps.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
