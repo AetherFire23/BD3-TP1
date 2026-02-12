@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="Sys" uuid="7ddadde4-cf0d-468f-af6a-b0e628125909">
+    <data-source source="LOCAL" name="@localhost" uuid="590dcbe4-a81d-4fc3-a65f-448a7754c598">
       <driver-ref>oracle.19</driver-ref>
       <synchronize>true</synchronize>
       <auto-commit>false</auto-commit>
@@ -14,7 +14,7 @@
       </jdbc-additional-properties>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="TP1" uuid="10f19d00-aeef-4008-95d2-e77cd73fd0f7">
+    <data-source source="LOCAL" name="@localhost [2]" uuid="c348936d-a32b-4111-b16f-31b4ffa3052b">
       <driver-ref>oracle.19</driver-ref>
       <synchronize>true</synchronize>
       <auto-commit>false</auto-commit>

@@ -33,7 +33,7 @@ public class MainJdbc {
         Contact contact3 = new Contact("Davy", "Boisselot", "davy_boisselot@hotmail.ca", "124124124");
         Client client3 = new Client(-1, "Pirate Cosplay de Davy Jones.", "123 venue pigeon", "www.davy-jones-le-pirate.org", 7666, contact);
 
-        Contact contact4 = new Contact("Émeric ", "Lincol", "Emeric-lincoln@hotmail.ca", "161581");
+        Contact contact4 = new Contact("Émeric ", "Lincoln", "Emeric-lincoln@hotmail.ca", "161581");
         Client client4 = new Client(-1, "Lincoln fils : l'histoire du fils illégitime", "555 venue pigeon", "", 200, contact);
 
         getClients();
