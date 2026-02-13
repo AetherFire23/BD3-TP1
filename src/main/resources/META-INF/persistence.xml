@@ -9,6 +9,7 @@
                       transaction-type="RESOURCE_LOCAL">  <!-- explicit is better -->
 
         <class>org.example.JPA.Entites.Adresse</class>
+        <class>org.example.JPA.Entites.Client</class>
 
         <properties>
             <!-- JDBC connection (these are standard Jakarta props) -->
