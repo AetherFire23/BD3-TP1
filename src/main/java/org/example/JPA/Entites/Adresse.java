@@ -13,14 +13,20 @@ package org.example.JPA.Entites;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "adresses")
 public class Adresse {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int Id;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "jpa_seq_adresses")
+    @SequenceGenerator(name = "jpa_seq_adresses", sequenceName = "seq_adresses", allocationSize = 1)
+    private int Id;
+    @Column
     private String rue;
+    @Column
     private String ville;
+    @Column(name = "code_postal")
     private String codepostal;
+    @Column
     private String pays;
 
     public Adresse() {
