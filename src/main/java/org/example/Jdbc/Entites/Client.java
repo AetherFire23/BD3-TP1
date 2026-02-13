@@ -178,7 +178,7 @@ public class Client {
             throw new RuntimeException(e);
         }
 
-        System.out.println("Client supprime avec id " + this.id);
+        System.out.println("Client supprime avec id " + this.id + "\n");
     }
 
     @Override

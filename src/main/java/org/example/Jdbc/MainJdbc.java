@@ -16,11 +16,12 @@ public class MainJdbc {
 
         System.out.println(client.toString());
         client.setAddress("456 nouvelle-adresse");
-        client.setName("Biggus Diggus");
+        client.setName("mon nouveau nom : Biggus Diggus");
         client.setCredit_limit(12000);
 
         client.modifier();
-        System.out.println(client.toString());
+        System.out.println(client.toString() + "\n");
+
 
         client.supprimer();
 
