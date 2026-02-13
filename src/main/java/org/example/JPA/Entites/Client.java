@@ -113,4 +113,18 @@ public class Client {
     public void setAdresseId(int adresseId) {
         this.adresseId = adresseId;
     }
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                ", prenom='" + prenom + '\'' +
+                ", email='" + email + '\'' +
+                ", nomComplet='" + nomComplet + '\'' +
+                ", genre=" + genre +
+                ", dateNaissance=" + dateNaissance +
+                ", adresseId=" + adresseId +
+                '}';
+    }
 }

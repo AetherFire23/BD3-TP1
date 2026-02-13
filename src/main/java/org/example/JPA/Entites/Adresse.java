@@ -78,4 +78,15 @@ public class Adresse {
     public void setPays(String pays) {
         this.pays = pays;
     }
+
+    @Override
+    public String toString() {
+        return "Adresse{" +
+                "Id=" + Id +
+                ", rue='" + rue + '\'' +
+                ", ville='" + ville + '\'' +
+                ", codepostal='" + codepostal + '\'' +
+                ", pays='" + pays + '\'' +
+                '}';
+    }
 }
