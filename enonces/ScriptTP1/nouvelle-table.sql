@@ -7,4 +7,3 @@ CREATE TABLE MEILLEUR_VENDEUR
     moyenne Number(10, 2)
 );
 
-SELECT * FROM ORDERS;

@@ -1,6 +1,9 @@
 package org.example.JPA;
 
-import jakarta.persistence.*;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.Persistence;
 import org.example.JPA.Entites.Adresse;
 import org.example.JPA.Entites.Client;
 import org.example.JPA.Enums.Genre;
@@ -39,7 +42,6 @@ public class JpaMain {
 
     /**
      * Methode pour Wrapper un appel Avec transaction.
-     *
      * @param runnable
      */
     public static void executeTransaction(Consumer<EntityManager> runnable) {
