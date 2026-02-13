@@ -101,13 +101,15 @@ public class JpaMain {
             transaction.commit();
 
         } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
             if (emf != null) {
                 emf.close();
             }
             if (em != null) {
                 em.close();
             }
-            e.printStackTrace();
         }
+
     }
 }
