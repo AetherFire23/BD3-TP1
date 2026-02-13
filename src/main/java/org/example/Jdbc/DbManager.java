@@ -1,4 +1,4 @@
-package org.example.Jdbc.Entites;
+package org.example.Jdbc;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

@@ -2,10 +2,8 @@ package org.example.Jdbc;
 
 import org.example.Jdbc.Entites.Client;
 import org.example.Jdbc.Entites.Contact;
-import org.example.Jdbc.Entites.DbManager;
 
 import java.sql.*;
-import java.util.List;
 
 public class MainJdbc {
     public static void main(String[] args) {

@@ -1,5 +1,7 @@
 package org.example.Jdbc.Entites;
 
+import org.example.Jdbc.DbManager;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourcePerFileMappings">
-    <file url="file://$PROJECT_DIR$/enonces/ScriptTP1/init_schema.sql" value="590dcbe4-a81d-4fc3-a65f-448a7754c598" />
+    <file url="file://$APPLICATION_CONFIG_DIR$/consoles/db/d18da46f-608b-48ae-b3d7-a4eb220c3bb5/console.sql" value="d18da46f-608b-48ae-b3d7-a4eb220c3bb5" />
+    <file url="file://$APPLICATION_CONFIG_DIR$/consoles/db/d18da46f-608b-48ae-b3d7-a4eb220c3bb5/console_1.sql" value="d18da46f-608b-48ae-b3d7-a4eb220c3bb5" />
+    <file url="file://$APPLICATION_CONFIG_DIR$/consoles/db/d18da46f-608b-48ae-b3d7-a4eb220c3bb5/console_2.sql" value="d18da46f-608b-48ae-b3d7-a4eb220c3bb5" />
+    <file url="file://$PROJECT_DIR$/enonces/ScriptTP1/init_schema.sql" value="2a046514-dbcb-433d-b3b3-f46ee5dad07f" />
+    <file url="file://$PROJECT_DIR$/enonces/ScriptTP1/nouvelle-table.sql" value="d18da46f-608b-48ae-b3d7-a4eb220c3bb5" />
+    <file url="file://$PROJECT_DIR$/enonces/request_debile.sql" value="d18da46f-608b-48ae-b3d7-a4eb220c3bb5" />
+    <file url="file://$PROJECT_DIR$/src/main/java/org/example/JPA/Entites-Jpa.sql" value="d18da46f-608b-48ae-b3d7-a4eb220c3bb5" />
   </component>
 </project>
