@@ -10,8 +10,12 @@ public class JpaMain {
         try (EntityManagerFactory emf = Persistence.createEntityManagerFactory("bibliothequePU")) {
             EntityManager em = emf.createEntityManager();
 
+            var transaction = em.getTransaction();
+            transaction.begin();
             Adresse adresse = new Adresse("ASD", "SADDS", "ASDASD< ", "ASDASD");
 
+            em.persist(adresse);
+            transaction.commit();
 
             em.close();
         }

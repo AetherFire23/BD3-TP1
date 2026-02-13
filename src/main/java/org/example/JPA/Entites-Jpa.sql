@@ -20,3 +20,9 @@ CREATE TABLE Client
     genre VARCHAR2(50) CHECK(genre = 'HOMME' OR genre = 'FEMME' OR genre = 'AUTRE' ),
     id_adresse NUMBER REFERENCES ADRESSE(id)
 );
+
+CREATE SEQUENCE employee_seq
+    START WITH 1
+    INCREMENT BY 1
+    CACHE 20
+    NOCYCLE;

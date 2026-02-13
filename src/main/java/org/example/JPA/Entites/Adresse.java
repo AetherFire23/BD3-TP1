@@ -15,8 +15,7 @@ import jakarta.persistence.*;
 @Entity
 public class Adresse {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq")
-    @SequenceGenerator( name = "user_seq", sequenceName = "user_sequence", allocationSize = 1 )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Id;
 
     private String rue;
@@ -24,6 +23,8 @@ public class Adresse {
     private String codepostal;
     private String pays;
 
+    public Adresse() {
+    }
 
     public Adresse(String rue, String ville, String codepostal, String pays) {
 
