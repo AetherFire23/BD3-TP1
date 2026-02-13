@@ -26,14 +26,20 @@ public class MainJdbc {
 
         // crer trois objets client et contact
         Contact contact2 = new Contact("Léo", "Béliveau", "leobeliveau@yahoolca", "124124");
-        Client client2 = new Client(-1, "Les Entreprises Dièse Co.", "1202 avenue Sharp", "www.diese.co", 20000, contact);
+        Client client2 = new Client(-1, "Les Entreprises Dièse Co.", "1202 avenue Sharp", "www.diese.co", 20000, contact2);
 
         Contact contact3 = new Contact("Davy", "Boisselot", "davy_boisselot@hotmail.ca", "124124124");
-        Client client3 = new Client(-1, "Pirate Cosplay de Davy Jones.", "123 venue pigeon", "www.davy-jones-le-pirate.org", 7666, contact);
+        Client client3 = new Client(-1, "Pirate Cosplay de Davy Jones.", "123 venue pigeon", "www.davy-jones-le-pirate.org", 7666, contact3);
 
         Contact contact4 = new Contact("Émeric ", "Lincoln", "Emeric-lincoln@hotmail.ca", "161581");
-        Client client4 = new Client(-1, "Lincoln fils : l'histoire du fils illégitime", "555 venue pigeon", "", 200, contact);
+        Client client4 = new Client(-1, "Lincoln fils : l'histoire du fils illégitime", "555 venue pigeon", "", 200, contact4);
 
+
+        // Ajouter les clients dans la BD
+
+        client2.ajouter();
+        client3.ajouter();
+        client4.ajouter();
         getClients();
     }
 
@@ -44,11 +50,12 @@ public class MainJdbc {
             PreparedStatement ps = connection.prepareStatement(sql);
             ResultSet s = ps.executeQuery();
             while (s.next()) {
-                System.out.println(s.getString(1));
-                System.out.println(s.getString(2));
-                System.out.println(s.getString(3));
-                System.out.println(s.getString(4));
-                System.out.println(s.getString(5));
+                System.out.println(s.getString(1)
+                        + s.getString(2) + " "
+                        + s.getString(3) + " "
+                        + s.getString(4) + " "
+                        + s.getString(5) + " "
+                );
             }
 
             connection.close();
