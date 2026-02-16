@@ -74,8 +74,6 @@ public class JpaMain {
             e.remove(commande);
             System.out.println("Supression de la commande id : " + commande.getId());
         });
-
-
     }
 
     /**
