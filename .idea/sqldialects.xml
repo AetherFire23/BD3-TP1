@@ -5,6 +5,6 @@
     <file url="file://$PROJECT_DIR$/enonces/ScriptTP1/TP1_schema.sql" dialect="Oracle" />
     <file url="file://$PROJECT_DIR$/enonces/ScriptTP1/init_schema.sql" dialect="Oracle" />
     <file url="file://$PROJECT_DIR$/enonces/ScriptTP1/nouvelle-table.sql" dialect="Oracle" />
-    <file url="file://$PROJECT_DIR$/enonces/request_debile.sql" dialect="Oracle" />
+    <file url="file://$PROJECT_DIR$/enonces/requete-complexe_partie_2.sql" dialect="Oracle" />
   </component>
 </project>
