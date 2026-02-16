@@ -1,37 +1,58 @@
-import oracledb
+melanges = ["eat", "tea", "tan", "ate", "nat", "bat"]
 
-def run_sql_file(connection, file_path):
-    cursor = connection.cursor()
+expected = [["eat", "tea", "ate"], ["tan", "nat"], ["bat"]]
 
-    with open(file_path, "r", encoding="utf-8") as f:
-        sql_script = f.read()
+print(sorted("bella"))
 
-    # Split by semicolon
-    statements = sql_script.split(";")
 
-    for statement in statements:
-        statement = statement.strip()
-        if not statement:
+def haveAllLettersInCommon(word, other):
+    if len(word) != len(other):
+        return False
+
+    firstSorted = sorted(word)
+    otherSorted = sorted(other)
+    for i in range(0, len(word) - 1):
+        if firstSorted[i] != otherSorted[i]:
+            return False
+
+    return True
+
+dic = {}
+for word in melanges:
+    amount_of_values_in_section = 1
+    for innerWord in melanges:
+        # if words are the same, skip
+        if word == innerWord:
             continue
+        else: # are they all in common ?
+            if haveAllLettersInCommon(word, innerWord):
+                key = "".join(sorted(innerWord))
+                if key in dic: # if so, add the word to the string -> string[]
+                    dic[key].append(word)
+                else:
+                    dic[key] = []
+                    dic[key].append(word)
+                amount_of_values_in_section = amount_of_values_in_section + 1
 
-        try:
-            cursor.execute(statement)
-            print("✅ Executed")
-        except Exception as e:
-            print("❌ Error but continuing:")
-            print(e)
 
-    connection.commit()
-    cursor.close()
+    if amount_of_values_in_section == 1:
+        key= "".join(sorted(word))
+        if key in dic:  # if so, add the word to the string -> string[]
+            dic[key].append(word)
+        else:
+            dic[key] = []
+            dic[key].append(word)
+
+arr = []
+lastArr = []
+for kvp in dic.items():
+    innerArr =  []
+    arr.append(innerArr)  # new dictionary for new word sequence
+    for word in kvp[1]:
+        innerArr.append(word)
+    lastArr.append(list(dict.fromkeys(innerArr)))
 
 
-if __name__ == "__main__":
-    connection = oracledb.connect(
-        user="my_user",
-        password="my_password",
-        dsn="localhost/XEPDB1"
-    )
-
-    run_sql_file(connection, "myscript.sql")
-
-    connection.close()
+print(lastArr)
+# transform all kvps into
+# print(dic)

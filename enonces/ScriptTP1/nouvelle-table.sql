@@ -7,5 +7,5 @@ CREATE TABLE MEILLEUR_VENDEUR
     moyenne Number(10, 2)
 );
 
-
 select * from meilleur_vendeur;
+select * from customers;
